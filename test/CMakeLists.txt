@@ -1,0 +1,22 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+PROJECT(Test)
+
+SET(CMAKE_CXX_STANDARD 11)
+SET(CMAKE_CXX_STANDARD_REQUIRED True)
+
+FIND_PACKAGE(GTest REQUIRED)
+INCLUDE_DIRECTORIES(${GTEST_INCLUDE_DIRS})
+
+FIND_PACKAGE( Boost 1.58.0 COMPONENTS program_options REQUIRED )
+INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
+
+INCLUDE_DIRECTORIES(../headers)
+INCLUDE_DIRECTORIES(headers)
+
+ADD_EXECUTABLE(runVTests src/vv_tests.cpp)
+ADD_EXECUTABLE(runPTests src/p_tests.cpp)
+
+ADD_LIBRARY(LibModule0 src/data_test.cpp src/performance_test.cpp)  
+
+TARGET_LINK_LIBRARIES(runVTests LibModule0 ${GTEST_LIBRARIES} ${Boost_LIBRARIES} pthread -lhiredis -lrt stdc++)
+TARGET_LINK_LIBRARIES(runPTests LibModule0 pthread -lhiredis -lrt stdc++)
