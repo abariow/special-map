@@ -52,9 +52,9 @@ public:
     PseudoUnorderedMap(const std::string& ip_address, unsigned int port);
 
 
-	/*****************************************************************//**
+    /*****************************************************************//**
     * takes socket path and connection type (Unix or Shared Memory)
-	* as arguments, throws an exception if gets TCP as Connection Type. 
+    * as arguments, throws an exception if gets TCP as Connection Type. 
     *********************************************************************/
     PseudoUnorderedMap(const std::string& socket_path, ConnectionType ct);
 
@@ -94,7 +94,7 @@ public:
     
     ///< operators:
     
-   /*****************************************************************//**
+    /****************************************************************//**
     * takes a key in bracket, then returns the corresponding value.
     *********************************************************************/
     VAL_TYPE operator[](const KEY_TYPE& key);

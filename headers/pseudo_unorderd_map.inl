@@ -41,19 +41,19 @@ PseudoUnorderedMap<KEY_TYPE, VAL_TYPE>::PseudoUnorderedMap(const std::string& so
      *  in redis_context
      */
 
-	/// checks connection type.
-	switch (ct)
-	{
-		case SHARED_MEMORY:
-			redis_context = redisConnectSharedMemory(socket_path.c_str());
-			break;
+    /// checks connection type.
+    switch (ct)
+    {
+        case SHARED_MEMORY:
+	    redis_context = redisConnectSharedMemory(socket_path.c_str());
+	    break;
 
-		case UNIX_SOCKET:
-    		redis_context = redisConnectUnix(socket_path.c_str());
-			break;
+	case UNIX_SOCKET:
+    	    redis_context = redisConnectUnix(socket_path.c_str());
+	    break;
 		
-		case TCP:
-			throw CouldNotConnectToRedisException();
+	case TCP:
+	    throw CouldNotConnectToRedisException();
 	}
 
     /// checks if connected to server successfully
