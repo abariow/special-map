@@ -11,8 +11,8 @@ someOtherfoler/
 *.exe
 *.o
 *.so
-
-*.so
+*.swp
+*.swo
 
 # Packages #
 ############
