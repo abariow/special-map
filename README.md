@@ -1,2 +1,2 @@
 # HssnMap 
-A Wrapper on hiredis.
+A wrapper on hiredis.
